@@ -6,15 +6,15 @@
 ### Terrence Ong Jun Han
 
 ```yaml
-# What was your data collection process?
+What was your data collection process?:
 
-Clearly describe how you collected and prepared your dataset. Include the following:
+#Clearly describe how you collected and prepared your dataset. Include the following:
 
-How many images did you collect per kuih muih category?
+#How many images did you collect per kuih muih category?
 
-Where did the images come from?
+#Where did the images come from?
 
-How did you ensure your dataset is diverse?
+#How did you ensure your dataset is diverse?
 ```
 (1) Scraped 2500~ images per class from the internet using engines Bing and Google. \
 (2) Convert the images to tensors. \
