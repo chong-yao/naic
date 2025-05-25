@@ -16,19 +16,25 @@ Where did the images come from?
 
 How did you ensure your dataset is diverse?
 ```
-(1) Scraped 2500~ images per class from the internet using engines Bing and Google.
-(2) Convert the images to tensors.
-(3) Compute the tensor differences between images to find out the image similarities, thus removing duplicates effectively.
-(4) Manually filtered unrelated images out (e.g. images with a huge YouTube logo on it), then combined them with some images taken by ourselves.
+(1) Scraped 2500~ images per class from the internet using engines Bing and Google. \
+(2) Convert the images to tensors. \
+(3) Compute the tensor differences between images to find out the image similarities, thus removing duplicates effectively. \
+(4) Manually filtered unrelated images out (e.g. images with a huge YouTube logo on it), then combined them with some images taken by ourselves. \
 (5) Annotated a few of the kuih for segmentation using Label Studio, thus we used our genuine original dataset, as the existing kuih datasets in dataset sharing platforms were not in segmentation format.
 
 We also included high and low resolution images of kuih. Low-res images for the model to generalise better, and high-res for the attention layers to capture the minute detail. We also took images that contained lighting from awkward angles and of various intensities, as most of the photos online were taken in optimal lighting and framing (to be appealing for promotions and advertisements). This allowed us to have more variety in our data. Moreover, we also included kuih that were partially eaten.
 
-For each class,
-(1) 20-30 kuih were annotated depending on the kuih feature complexity
-(2) We trained a small YOLOv11-seg of scale ‘n’ / ‘s’ segmentation model to assist & speed us up with the annotation process.
-(3) The model to runs through the rest of the unannotated images in that class, and as it annotates for us, we decide whether to accept its annotation for that particular image.
-(4) Trained a little bigger model combining those model-annotated images with the ones we manually annotated earlier.
+After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
+
+-insert test_images viz
+
+#### We discovered that both search engines weren't really able to tell the difference between Kuih Lapis and Kek Lapis. Maybe they need our model. Hehe...
+
+For each class, \
+(1) 20-30 kuih were annotated depending on the kuih feature complexity \
+(2) We trained a small YOLOv11-seg of scale ‘n’ / ‘s’ segmentation model to assist & speed us up with the annotation process. \
+(3) The model to runs through the rest of the unannotated images in that class, and as it annotates for us, we decide whether to accept its annotation for that particular image. \
+(4) Trained a little bigger model combining those model-annotated images with the ones we manually annotated earlier. \
 (5) Repeat from step (2) until the entire dataset is completed.
 
 Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
@@ -67,5 +73,18 @@ What algorithm or architecture did you use as your final model?
 Why did you choose it?
 ```
 
+We chose an ensemble of a CNN segmentation model and also a Vision Transformer model
+
+For the CNN model:
+***"A robust segmentation model inherently improves classification accuracy"*** - which is actually really true.
+
+- Segmentation allowed the model to prioritize the core part of the image (the kuih) itself, reducing distractions from irrelevant background elements 
+
+Initially we did try to use classification models but 
+
+-include confusion matrix for cls
+-include con mat for seg
+
+Reason for
 -seg build on top of cls, if seg good, cls definitely good
 -seg can focus the model on the core part of the image (the actual kuih)
