@@ -80,9 +80,9 @@ For the CNN model:
 
 - Segmentation allowed the model to prioritize the core part of the image (the kuih) itself, reducing distractions from irrelevant background elements 
 
-Initially we did try to use classification models but 
+Initially we did try to use classification models but the confusion matrix for the YOLOv11-cls models weren't at all that impressive:
 
--include confusion matrix for cls
+!["Confusion matrix for YOLOv11m-cls model on a 50-images per class dataset"](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/confusion_matrix_cls.png)
 -include con mat for seg
 
 Reason for
