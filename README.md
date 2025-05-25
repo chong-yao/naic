@@ -82,8 +82,11 @@ For the CNN model:
 
 Initially we did try to use classification models but the confusion matrix for the YOLOv11-cls models weren't at all that impressive:
 
-!["Confusion matrix for YOLOv11m-cls model on a 50-images per class dataset"](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/confusion_matrix_cls.png)
--include con mat for seg
+![Confusion matrix for YOLOv11m-cls model on a 50-images per class dataset](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/confusion_matrix_cls.png)
+
+Then we started training segmentation models:
+![Training & validation metrics for the YOLOv11x-seg model](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/seg-metrics.png)
+Notice how the cls_loss plummeted after only a few epochs?
 
 Reason for
 -seg build on top of cls, if seg good, cls definitely good
