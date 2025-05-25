@@ -26,7 +26,7 @@ We also included high and low resolution images of kuih. Low-res images for the 
 
 After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
 
-[-insert test_images viz](https://github.com/henryocy/naic/blob/main/val-viz.jpg?raw=true)
+![image_alt](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/val-viz.jpg)
 
 #### We discovered that both search engines weren't really able to tell the difference between Kuih Lapis and Kek Lapis. Maybe they need our model. Hehe...
 
