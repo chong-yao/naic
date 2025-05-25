@@ -16,11 +16,22 @@ Where did the images come from?
 
 How did you ensure your dataset is diverse?
 ```
-Scraped around 2500~ images of kuih per class from the internet using engines Bing and Google. To remove duplicated images, we convert images to tensors, then compute the tensor difference between images to find out the image similarities. Then manually filtered unrelated images out (for example the some images that have a huge YouTube logo on it), and images taken by ourselves. We annotated a few of the kuih for segmentation using Label Studio, and thus we used our genuine original dataset, and did not use any of the existing kuih datasets in Roboflow or other dataset sharing platforms because we needed the kuih annotated in segmentation format.
+(1) Scraped 2500~ images per class from the internet using engines Bing and Google.
+(2) Convert the images to tensors.
+(3) Compute the tensor differences between images to find out the image similarities, thus removing duplicates effectively.
+(4) Manually filtered unrelated images out (e.g. images with a huge YouTube logo on it), then combined them with some images taken by ourselves.
+(5) Annotated a few of the kuih for segmentation using Label Studio, thus we used our genuine original dataset, as the existing kuih datasets in dataset sharing platforms were not in segmentation format.
 
-To ensure the dataset is diverse, we also included high and low resolution images of kuih. Low resolution images for the model to generalise better, and high resolution for the attention layers to really capture the minute detail. We also took images that contain lighting from different angles and various intensities. We also try to take the photo from different and weird angles as most of the photos online are taken in good conditions(used for promotion). This allows us to have much more variations of data. Moreover, we also included kuih that were partially eaten.
+We also included high and low resolution images of kuih. Low-res images for the model to generalise better, and high-res for the attention layers to capture the minute detail. We also took images that contained lighting from awkward angles and of various intensities, as most of the photos online were taken in optimal lighting and framing (to be appealing for promotions and advertisements). This allowed us to have more variety in our data. Moreover, we also included kuih that were partially eaten.
 
-For each class, after a few (20-30) kuih were annotated depending on the kuih feature complexity, we trained a small (YOLOv11-seg of scale ‘n’ / ‘s’) segmentation model to assist & speed us up with the annotation process. We got the model to run through the rest of the unannotated images in that class, and let the model annotate for us as we decide to accept (or decline) its annotation for that particular image. We then trained a little bigger model, combining those model-annotated images with the ones we manually annotated earlier. Rinse and repeat until the entire dataset is completed. Eventually we are plateaued with a raw dataset of 98 images in each class that are perfectly annotated by the model for its respective class.
+For each class,
+(1) 20-30 kuih were annotated depending on the kuih feature complexity
+(2) We trained a small YOLOv11-seg of scale ‘n’ / ‘s’ segmentation model to assist & speed us up with the annotation process.
+(3) The model to runs through the rest of the unannotated images in that class, and as it annotates for us, we decide whether to accept its annotation for that particular image.
+(4) Trained a little bigger model combining those model-annotated images with the ones we manually annotated earlier.
+(5) Repeat from step (2) until the entire dataset is completed.
+
+Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
 
 ```yaml
 # What was your model development process?
@@ -33,13 +44,18 @@ What strategies or techniques did you try to improve performance?
 
 Did you try anything creative or unusual?
 ```
-Ran all the training and inference on our computers. Used CUDA to allow training to be supercharged by the GPU, and PyTorch as our training framework, with the assistance of the Ultralytics library to save us on a lot of coding for the metrics & loss, forward and backward propagation, etc.
+- Ran all the training and inference on our computers.
+- Used CUDA to supercharge trainig by the GPU
+- PyTorch as our training framework, and the Ultralytics library to save us a lot of coding for the metrics, loss, forward & backward propagation, etc.
 
-We directly edited the 'yolo11seg.yaml' file to twice the depth, width, and channel capacity of the YOLO11-seg models. We also tried adding more C3k2 blocks, increased the number of SPPF kernels, and added more C2PSA attention layers.
+### Now here's the fun part:
+We directly edited the 'yolo11seg.yaml' model configuration file to twice the depth, width, and channel capacity of the YOLO11-seg models. We also tried adding more C3k2 blocks, increased the number of SPPF kernels, and added more C2PSA attention layers.
 
-Those require too much computing power from our end (yes we tested one epoch took 4+ hours and even the Nvidia P100 16GB VRAM GPU in Kaggle ran out of memory afterwards), thus we just stuck to adding more attention layers and keeping the rest as they were.
+Those required too much computing power from our end. Yes we tested: one epoch took 4+ hours and even the Nvidia P100 16GB VRAM GPU in Kaggle ran out of memory afterwards! Thus we just stuck to adding more attention layers and keeping the rest as they were.
 
-We tried a few things, for example, automatically setting the exposure of test images before inference to get a more consistent light balance all over the image, giving the model less of a hard time. But that could be solved by training the model with images preprocessed to have different exposure levels.
+Normalising the exposure of test images before inference to get a more consistent light balance all over the image, giving the model less of a hard time. But that could be solved by training the model with images preprocessed to have different exposure levels.
+
+#### Really, if we were given more time for R&D, our model would've been miles better at telling Malaysian traditional cookies apart!
 
 ```yaml
 # What is your final model and why did you choose it?
