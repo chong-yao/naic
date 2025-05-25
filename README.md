@@ -24,10 +24,6 @@ How did you ensure your dataset is diverse?
 
 We also included high and low resolution images of kuih. Low-res images for the model to generalise better, and high-res for the attention layers to capture the minute detail. We also took images that contained lighting from awkward angles and of various intensities, as most of the photos online were taken in optimal lighting and framing (to be appealing for promotions and advertisements). This allowed us to have more variety in our data. Moreover, we also included kuih that were partially eaten.
 
-After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
-
-![image_alt](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/val-viz.jpg)
-
 #### We discovered that both search engines weren't really able to tell the difference between Kuih Lapis and Kek Lapis. Maybe they need our model. Hehe...
 
 For each class, \
@@ -38,6 +34,10 @@ For each class, \
 (5) Repeat from step (2) until the entire dataset is completed.
 
 Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
+
+After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
+
+![image_alt](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/val-viz.jpg)
 
 ```yaml
 # What was your model development process?
