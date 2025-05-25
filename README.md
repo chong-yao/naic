@@ -8,13 +8,13 @@
 ```yaml
 What was your data collection process?:
 
-#Clearly describe how you collected and prepared your dataset. Include the following:
+# Clearly describe how you collected and prepared your dataset. Include the following:
 
-#How many images did you collect per kuih muih category?
+# How many images did you collect per kuih muih category?
 
-#Where did the images come from?
+# Where did the images come from?
 
-#How did you ensure your dataset is diverse?
+# How did you ensure your dataset is diverse?
 ```
 (1) Scraped 2500~ images per class from the internet using engines Bing and Google. \
 (2) Convert the images to tensors. \
@@ -42,13 +42,13 @@ After all this, we also wrote a script to render all the segmentation annotation
 ```yaml
 What was your model development process?:
 
-#Clearly describe how you built and improved your model. Include the following:
+# Clearly describe how you built and improved your model. Include the following:
 
-#What models or tools did you use?
+# What models or tools did you use?
 
-#What strategies or techniques did you try to improve performance?
+# What strategies or techniques did you try to improve performance?
 
-#Did you try anything creative or unusual?
+# Did you try anything creative or unusual?
 ```
 - Ran all the training and inference on our computers.
 - Used CUDA to supercharge trainig by the GPU
@@ -66,11 +66,11 @@ Normalising the exposure of test images before inference to get a more consisten
 ```yaml
 What is your final model and why did you choose it?:
 
-#Clearly describe your final model and explain why you selected it. Include the following:
+# Clearly describe your final model and explain why you selected it. Include the following:
 
-#What algorithm or architecture did you use as your final model?
+# What algorithm or architecture did you use as your final model?
 
-#Why did you choose it?
+# Why did you choose it?
 ```
 
 We chose an ensemble of a CNN segmentation model and also a Vision Transformer model
