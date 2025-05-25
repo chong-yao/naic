@@ -5,7 +5,7 @@
 ### Ong Chong Yao
 ### Terrence Ong Jun Han
 
-# ```yaml
+```yaml
 What was your data collection process?:
 
 #Clearly describe how you collected and prepared your dataset. Include the following:
@@ -40,15 +40,15 @@ After all this, we also wrote a script to render all the segmentation annotation
 ![image_alt](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/val-viz.jpg)
 
 ```yaml
-# What was your model development process?
+What was your model development process?:
 
-Clearly describe how you built and improved your model. Include the following:
+#Clearly describe how you built and improved your model. Include the following:
 
-What models or tools did you use?
+#What models or tools did you use?
 
-What strategies or techniques did you try to improve performance?
+#What strategies or techniques did you try to improve performance?
 
-Did you try anything creative or unusual?
+#Did you try anything creative or unusual?
 ```
 - Ran all the training and inference on our computers.
 - Used CUDA to supercharge trainig by the GPU
@@ -64,13 +64,13 @@ Normalising the exposure of test images before inference to get a more consisten
 #### Really, if we were given more time for R&D, our model would've been miles better at telling Malaysian traditional cookies apart!
 
 ```yaml
-# What is your final model and why did you choose it?
+What is your final model and why did you choose it?:
 
-Clearly describe your final model and explain why you selected it. Include the following:
+#Clearly describe your final model and explain why you selected it. Include the following:
 
-What algorithm or architecture did you use as your final model?
+#What algorithm or architecture did you use as your final model?
 
-Why did you choose it?
+#Why did you choose it?
 ```
 
 We chose an ensemble of a CNN segmentation model and also a Vision Transformer model
