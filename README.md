@@ -1,9 +1,9 @@
 # NAIC (AI Technical) team: CantByteUs
 ## Team members:
-Chin Zhi Xian\
-Ng Tze Yang\
-Ong Chong Yao\
-Terrence Ong Jun Han
+### Chin Zhi Xian\
+### Ng Tze Yang\
+### Ong Chong Yao\
+### Terrence Ong Jun Han
 
 ```yaml
 # What was your data collection process?
