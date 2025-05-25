@@ -37,6 +37,7 @@ Eventually we were plateaued with a raw dataset of 98 images in each class that 
 
 After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
 
+*Attached image below shows a peek into our rendered validation split:*
 ![image_alt](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/val-viz.jpg)
 
 ```yaml
