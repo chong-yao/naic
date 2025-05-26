@@ -39,6 +39,8 @@ Eventually we were plateaued with a raw dataset of 98 images in each class that 
 
 **(7)** We then uploaded all 784 ((90 + 8) × 8 classes) images into Roboflow for augmentation and artificially increase the dataset size. Effectively tripled the dataset size while applying augmentations.
 
+**(8)** Added a few non-kuih related I images with no labels into the training split to reduce False Positives
+
 After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
 
 *Attached image below shows our rendered final validation split, the different mask colours representing the 8 different classes:*
@@ -122,4 +124,8 @@ Attached image below shows an instance of training the ViT:
 Attached image below shows a separate instance of training the ViT:
 ![alt](https://github.com/henryocy/naic/blob/3ac8a63de21a302df553b8121c417eaaa0e24cfc/terr-train-vit.jpg)
 
-**ViTs plateau very fast** (look at epoch 17)
+**ViTs plateau very fast** (look at epoch 17). ViTs' fast convergence tends to bring the risk of overfitting too, thus we had to be careful and save the model at every epoch.
+
+## Finally, model ensemble 
+
+### This is where we combined the outputs of the CNN and ViT to give an output.
