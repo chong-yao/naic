@@ -16,22 +16,22 @@ What was your data collection process?:
 
 # How did you ensure your dataset is diverse?
 ```
-(1) Scraped 2500~ images per class from the internet using engines Bing and Google. \
-(2) Convert the images to tensors. \
-(3) Compute the tensor differences between images to find out the image similarities, thus removing duplicates effectively. \
-(4) Manually filtered unrelated images out (e.g. images with a huge YouTube logo on it), then combined them with some images taken by ourselves. \
-(5) Annotated a few of the kuih for segmentation using Label Studio, thus we used our genuine original dataset, as the existing kuih datasets in dataset sharing platforms were not in segmentation format.
+**(1)** Scraped 2500~ images per class from the internet using engines Bing and Google. \
+**(2)** Convert the images to tensors. \
+**(3)** Compute the tensor differences between images to find out the image similarities, thus removing duplicates effectively. \
+**(4)** Manually filtered unrelated images out (e.g. images with a huge YouTube logo on it), then combined them with some images taken by ourselves. \
+**(5)** Annotated a few of the kuih for segmentation using Label Studio, thus we used our genuine original dataset, as the existing kuih datasets in dataset sharing platforms were not in segmentation format.
 
 We also included high and low resolution images of kuih. Low-res images for the model to generalise better, and high-res for the attention layers to capture the minute detail. We also took images that contained lighting from awkward angles and of various intensities, as most of the photos online were taken in optimal lighting and framing (to be appealing for promotions and advertisements). This allowed us to have more variety in our data. Moreover, we also included kuih that were partially eaten.
 
 *We discovered that both search engines weren't really able to tell the difference between Kuih Lapis and Kek Lapis too!*
 
 For each class, \
-(1) 20-30 kuih were annotated depending on the kuih feature complexity \
-(2) We trained a small YOLOv11-seg of scale ‘n’ / ‘s’ segmentation model to assist & speed us up with the annotation process. \
-(3) The model to runs through the rest of the unannotated images in that class, and as it annotates for us, we decide whether to accept its annotation for that particular image. \
-(4) Trained a little bigger model combining those model-annotated images with the ones we manually annotated earlier. \
-(5) Repeat from step (2) until the entire dataset is completed.
+**(1)** 20-30 kuih were annotated depending on the kuih feature complexity \
+**(2)** We trained a small YOLOv11-seg of scale ‘n’ / ‘s’ segmentation model to assist & speed us up with the annotation process. \
+**(3)** The model to runs through the rest of the unannotated images in that class, and as it annotates for us, we decide whether to accept its annotation for that particular image. \
+**(4)** Trained a little bigger model combining those model-annotated images with the ones we manually annotated earlier. \
+**(5)** Repeat from step **(2)** until the entire dataset is completed.
 
 Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
 
@@ -56,10 +56,11 @@ What was your model development process?:
 - PyTorch as our training framework, and the Ultralytics library to save us a lot of coding for the metrics, loss, forward & backward propagation, etc.
 
 ### Now here's the fun part:
-(1) We directly edited the 'yolo11seg.yaml' model configuration file to twice the depth, width, and channel capacity of the YOLO11-seg models. We also tried adding more C3k2 blocks, increased the number of SPPF kernels, and added more C2PSA attention layers.
+**(1)** We directly edited the 'yolo11seg.yaml' model configuration file to twice the depth, width, and channel capacity of the YOLO11-seg models. We also tried adding more C3k2 blocks, increased the number of SPPF kernels, and added more C2PSA attention layers.
 
 Those required too much computing power from our end. Yes we tested: one epoch took 4+ hours and even the Nvidia P100 16GB VRAM GPU in Kaggle ran out of memory afterwards! Thus we just stuck to adding more attention layers and keeping the rest as they were.
 
+**(2)** \
 "***Large models tend to overfit when trained with a small-to-medium-sized dataset***"
 
 **Due to our kuih dataset being small, immediately after adding more attention layers, we trained a YOLOv11x-seg model from scratch on the full COCO 2017 dataset. Through a larger sample, the model can preconfigure all its neurons' weights and biases to be optimal, thus not too specific (un-generalisable) on the kuih dataset first to make finetuning on kuih a lot better. This is actually the main reason why pretrained models are so popular to be trained on top on, because the weights and biases will be configured nicely to prevent overfitting and are really adaptable to smaller dataset sizes. \
