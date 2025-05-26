@@ -96,3 +96,12 @@ We started training segmentation models:
 ![Training & validation metrics for the YOLOv11x-seg model](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/seg-metrics.png)
 
 **Notice how the cls_loss plummeted after only a few epochs?**
+
+### For the Vision Transformer:
+Vision Transformers split the input image into patches, and then "transform" the patches into tokens (similar to words in LLMs) 
+
+***"ViTs can capture relationships across the entire image in every layer"***
+
+Vision Transformers perform really well and more efficiently (even surpassing CNNs) only if they were pretrained on a large dataset.
+
+We have chosen the eva02_base_patch14_224.mim_in22k model from  Hugging Face due to it being pretrained on the ImageNet 22k. Thus just like the CNN, is great at adapting to smaller datasets.
