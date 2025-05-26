@@ -108,6 +108,6 @@ ViTs use a 'self-attention' mechanism. That allows the model to relate long-dist
 
 Vision Transformers perform really well and more efficiently (even surpassing CNNs) only if they were pretrained on a large dataset.
 
-We have chosen the eva02_base_patch14_224.mim_in22k model from  Hugging Face due to it being pretrained on the ImageNet 22k. Thus just like the CNN, is great at transfer learning over to smaller datasets
+We have chosen the eva02_base_patch14_224.mim_in22k model (from  Hugging Face and the Timm library) due to it being pretrained on the ImageNet 22k. Thus just like the CNN, is great at transfer learning over to smaller datasets
 
 -insert training screenshot
