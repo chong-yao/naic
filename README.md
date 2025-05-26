@@ -26,12 +26,17 @@ We also included high and low resolution images of kuih. Low-res images for the 
 
 *Even Bing and Google search engines weren't really able to tell the difference between Kuih Lapis and Kek Lapis, and often got the two classes jumbled up too!*
 
+We used a dataset annotation & semi-supervised training method called **PSEUDO LABELLING**
+
 For each class, \
 **(1)** 20-30 kuih were annotated depending on the kuih feature complexity \
 **(2)** We trained a small YOLOv11-seg of scale ‘n’ / ‘s’ segmentation model to assist & speed us up with the annotation process. \
 **(3)** The model to runs through the rest of the unannotated images in that class, and as it annotates for us, we decide whether to accept its annotation for that particular image. \
 **(4)** Trained a little bigger model combining those model-annotated images with the ones we manually annotated earlier. \
 **(5)** Repeat from step **(2)** until the entire dataset is completed.
+
+Attached image below explains pseudo-labelling:
+![alt](https://github.com/henryocy/naic/blob/bfdda578c6950efe76dd8404664154a68988e6c5/pseudo-labelling.jpg)
 
 Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
 
