@@ -38,6 +38,8 @@ For each class, \
 *Attached image explains pseudo-labelling:*
 ![alt](https://github.com/henryocy/naic/blob/bfdda578c6950efe76dd8404664154a68988e6c5/pseudo-labelling.jpg)
 
+```Lee, Dong-Hyun. (2013). Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks. ICML 2013 Workshop : Challenges in Representation Learning (WREPL). We propose the simple and efficient method of semi-supervised learning for deep neural networks. Basically, the proposed network is trained in a supervised fashion with labeled and unlabeled data simultaneously. For un-labeled data, Pseudo-Label s, just picking up the class which has the maximum predicted probability, are used as if they were true labels. This is in effect equivalent to Entropy Regularization. It favors a low-density separation between classes, a commonly assumed prior for semi-supervised learning. With De-noising Auto-Encoder and Dropout, this simple method outperforms conventional methods for semi-supervised learning with very small labeled data on the MNIST handwritten digit dataset.```
+
 Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
 
 **(6)** Split per-class dataset into 90 images for train and 8 images for validation.
