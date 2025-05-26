@@ -60,7 +60,7 @@ What was your model development process?:
 # Did you try anything creative or unusual?
 ```
 - Ran all the training and inference on our computers.
-- Used CUDA to supercharge trainig by the GPU
+- Used CUDA to supercharge training by the GPU
 - PyTorch as our training framework, and the Ultralytics library to save us a lot of coding for the metrics, loss, forward & backward propagation, etc.
 
 ### Now here's the fun part:
