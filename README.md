@@ -139,3 +139,5 @@ If both models agree with each other on the predicted class, then we just take t
 If one model outputs a class (or NaN), another model the other, we will take the class with the highest confidence out of both models' predicted classes.
 
 If both models give no output, then we will just leave that image blank.
+
+This hybrid approach outperformed solo models in classification tests.
