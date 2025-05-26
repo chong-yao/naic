@@ -102,6 +102,12 @@ Vision Transformers split the input image into patches, and then "transform" the
 
 ***"ViTs can capture relationships across the entire image in every layer"***
 
+Kuih may look visually similar (looking at kek lapis-kuih lapis & kuih seri muka-kuih talam similarities) BUT they have different textures that cannot be easily identified when only looking at a certain part of the image.
+
+ViTs use a 'self-attention' mechanism. That allows the model to relate long-distance relations between image regions, thus making for a suitable choice to classify kuih by **analysing the entire image together**. This means that even if a kuih looks slightly different across images, the ViT can still recognise it based on learnt patterns
+
 Vision Transformers perform really well and more efficiently (even surpassing CNNs) only if they were pretrained on a large dataset.
 
-We have chosen the eva02_base_patch14_224.mim_in22k model from  Hugging Face due to it being pretrained on the ImageNet 22k. Thus just like the CNN, is great at adapting to smaller datasets.
+We have chosen the eva02_base_patch14_224.mim_in22k model from  Hugging Face due to it being pretrained on the ImageNet 22k. Thus just like the CNN, is great at transfer learning over to smaller datasets
+
+-insert training screenshot
