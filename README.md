@@ -68,7 +68,7 @@ So we replicated that.
 
 Normalising the exposure of test images before inference to get a more consistent light balance all over the image, giving the model less of a hard time. But that could be solved by training the model with images preprocessed to have different exposure levels.
 
-#### Really, if we were given more time for R&D, our model would've been miles better at telling Malaysian traditional cookies apart!
+*Really, if we were given more time for R&D, our model would've been miles better at telling Malaysian traditional cookies apart!*
 
 ```yaml
 What is your final model and why did you choose it?:
