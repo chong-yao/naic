@@ -134,7 +134,7 @@ Vision Transformers perform well and more efficiently (even surpassing CNNs) onl
 
 We have chosen the EVA-02 model 'eva02_base_patch14_224.mim_in22k' (from  Hugging Face and the Timm library) due to it being pretrained on the ImageNet 22k. Thus just like the CNN, is great at transfer learning over to smaller datasets
 
-*Attached image shows an instance of training the ViT: ^^^*
+*Attached image shows an instance of training the ViT:*
 ![alt text](cy-train-vit.png)
 
 **Notice how fast the model converges even in the few few epochs?**
