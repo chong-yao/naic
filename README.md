@@ -118,4 +118,4 @@ Attached image below shows an instance of training the ViT:
 Attached image below shows a separate instance of training the ViT:
 ![alt](https://github.com/henryocy/naic/blob/3ac8a63de21a302df553b8121c417eaaa0e24cfc/terr-train-vit.jpg)
 
-**ViTs plateau very fast**
+**ViTs plateau very fast** (look at epoch 17)
