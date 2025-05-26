@@ -37,7 +37,7 @@ Eventually we were plateaued with a raw dataset of 98 images in each class that 
 
 **(6)** Split per-class dataset into 90 images for train and 8 images for validation.
 
-**(6)** We then uploaded all 784 ((90 + 8) × 8 classes) images into Roboflow for augmentation and artificially increase the dataset size. Effectively tripled the dataset size while applying augmentations.
+**(7)** We then uploaded all 784 ((90 + 8) × 8 classes) images into Roboflow for augmentation and artificially increase the dataset size. Effectively tripled the dataset size while applying augmentations.
 
 After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
 
