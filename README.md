@@ -35,9 +35,13 @@ For each class, \
 
 Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
 
+**(6)** Split per-class dataset into 90 images for train and 8 images for validation.
+
+**(6)** We then uploaded all 784 ((90 + 8) × 8 classes) images into Roboflow for augmentation and artificially increase the dataset size. Effectively tripled the dataset size while applying augmentations.
+
 After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
 
-*Attached image below shows a peek into our rendered validation split, the different colours represent the 8 different classes:*
+*Attached image below shows our rendered final validation split, the different colours representing the 8 different classes:*
 ![image_alt](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/val-viz.jpg)
 
 ```yaml
