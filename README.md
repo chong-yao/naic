@@ -36,7 +36,7 @@ For each class, \
 **(5)** Repeat from step **(2)** until the entire dataset is completed.
 
 *Attached image explains pseudo-labelling:*
-![alt](https://github.com/henryocy/naic/blob/bfdda578c6950efe76dd8404664154a68988e6c5/pseudo-labelling.jpg)
+![alt text](pseudo-labelling.jpg)
 
 Paper:```
 Lee, Dong-Hyun. (2013). Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks. ICML 2013 Workshop : Challenges in Representation Learning (WREPL). We propose the simple and efficient method of semi-supervised learning for deep neural networks. Basically, the proposed network is trained in a supervised fashion with labeled and unlabeled data simultaneously. For un-labeled data, Pseudo-Label s, just picking up the class which has the maximum predicted probability, are used as if they were true labels. This is in effect equivalent to Entropy Regularization. It favors a low-density separation between classes, a commonly assumed prior for semi-supervised learning. With De-noising Auto-Encoder and Dropout, this simple method outperforms conventional methods for semi-supervised learning with very small labeled data on the MNIST handwritten digit dataset.```
@@ -47,14 +47,14 @@ Eventually we were plateaued with a raw dataset of 98 images in each class that 
 
 **(7)** We then uploaded all 784 ((90 + 8) × 8 classes) images into Roboflow for augmentation and artificially increase the dataset size. Effectively tripled the dataset size while applying augmentations.
 
-HOWEVER we purposely left the hue and colour adjustment augmentations out because it will mess with how the model interprets the images, and due to kuih identification being very colour-sensitive.
+HOWEVER we purposely left the hue and colour adjustment augmentations out because it will mess with how the model interprets the images, and due to kuih identification being very colour sensitive.
 
 **(8)** Added a few non-kuih related I images with no labels into the training split to reduce False Positives
 
-After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
+After all this, we also wrote a script to render all the segmentation annotations on top of the images and then place all of them into a grid to be neatly visualised.
 
 *Attached image below shows our rendered final validation split, the different mask colours representing the 8 different classes:*
-![image_alt](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/val-viz.jpg)
+![alt text](val-viz.jpg)
 
 ```yaml
 What was your model development process?:
@@ -74,13 +74,13 @@ What was your model development process?:
 ### Now here's the fun part:
 **(1)** We directly edited the 'yolo11seg.yaml' model configuration file to twice the depth, width, and channel capacity of the YOLO11-seg models. We also tried adding more C3k2 blocks, increased the number of SPPF kernels, and added more C2PSA attention layers.
 
-Those required too much computing power from our end. Yes we tested: one epoch took 4+ hours and even the Nvidia P100 16GB VRAM GPU in Kaggle ran out of memory afterwards! Thus we just stuck to adding more attention layers and keeping the rest as they were.
+Those required too much computing power from our end. Yes, we tested: one epoch took 4+ hours and even the Nvidia P100 16GB VRAM GPU in Kaggle ran out of memory afterwards! Thus, we just stuck to adding more attention layers and keeping the rest as they were.
 
 **(2)** \
 ***"Large models tend to overfit when trained with a small-to-medium-sized dataset"***
 
 Due to our kuih dataset being small, immediately after adding more attention layers, we trained a YOLOv11x-seg model from scratch on the full COCO 2017 dataset. Through a larger sample, the model can preconfigure all its neurons' weights and biases to be optimal, thus not too specific (un-generalisable) on the kuih dataset first to make finetuning on kuih a lot better. This is actually the main reason why pretrained models are so popular to be trained on top on, because the weights and biases will be configured nicely to prevent overfitting and are really adaptable to smaller dataset sizes. \
-So we replicated that.
+So, we replicated that.
 
 Normalising the exposure of test images before inference to get a more consistent light balance all over the image, giving the model less of a hard time. But that could be solved by training the model with images preprocessed to have different exposure levels.
 
@@ -96,43 +96,51 @@ What is your final model and why did you choose it?:
 # Why did you choose it?
 ```
 
-We chose an ensemble of a CNN segmentation model and also a Vision Transformer model
+We chose an ensemble of a CNN segmentation model and also a Vision Transformer model.
 
 ### For the CNN model:
 
 Initially we did try to use classification models but the confusion matrix for the YOLOv11-cls models weren't at all that impressive:
 
-![Confusion matrix for YOLOv11m-cls model on a 50-images per class dataset](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/confusion_matrix_cls.png)
+*Attached image shows the confusion matrix for YOLOv11m-cls model on a 50-images per class dataset:*
+![alt text](confusion_matrix_cls.png)
 
 ***"A robust segmentation model inherently improves classification accuracy"*** - which is actually really true.
 
 - Segmentation allowed the model to prioritize the core part of the image (the kuih) itself, reducing distractions from irrelevant background elements 
 
 We started training segmentation models:
-![Training & validation metrics for the YOLOv11x-seg model](https://github.com/henryocy/naic/blob/b13f73f0e445c1bfe7b85149d84d335863b27158/seg-metrics.png)
+
+*Attached image shows training & validation metrics for the YOLOv11x-seg model:*
+![alt text](seg-metrics.png)
 
 **Notice how the cls_loss plummeted after only a few epochs?**
 
+True enough, the confusion matrix for the segmentation model was near-perfect.
+
+*Attached image shows the confusion matrix for YOLOv11x-seg model on an 8-images per class validation split:*
+![alt text](confusion_matrix_normalized_seg.png)
+
 ### For the Vision Transformer:
-Vision Transformers split the input image into patches, and then "transform" the patches into tokens (similar to words in LLMs) 
+Vision Transformers split the input image into patches, and then "transform" the patches into tokens (like words in LLMs) 
 
 ***"ViTs can capture relationships across the entire image in every layer"***
 
 Kuih may look visually similar (looking at kek lapis-kuih lapis & kuih seri muka-kuih talam similarities) BUT they have different textures that cannot be easily identified when only looking at a certain part of the image.
 
-ViTs use a 'self-attention' mechanism. That allows the model to relate long-distance relations between image regions, thus making for a suitable choice to classify kuih by **analysing the entire image together**. This means that even if a kuih looks slightly different across images, the ViT can still recognise it based on learnt patterns
+ViTs use a 'self-attention' mechanism. That allows the model to relate long-distance relations between image regions, thus making for a suitable choice to classify kuih by **analysing the entire image together**. This means that even if a kuih looks slightly different across images, the ViT can still recognise it based on learnt patterns.
 
-Vision Transformers perform really well and more efficiently (even surpassing CNNs) only if they were pretrained on a large dataset.
+Vision Transformers perform well and more efficiently (even surpassing CNNs) only if they were pretrained on a large dataset.
 
 We have chosen the EVA-02 model 'eva02_base_patch14_224.mim_in22k' (from  Hugging Face and the Timm library) due to it being pretrained on the ImageNet 22k. Thus just like the CNN, is great at transfer learning over to smaller datasets
 
-Attached image below shows an instance of training the ViT:
-![alt](https://github.com/henryocy/naic/blob/1d38f33a620480db72da890cc9324e9973f4e37b/cy-train-vit.png)
+*Attached image shows an instance of training the ViT: ^^^*
+![alt text](cy-train-vit.png)
 
 **Notice how fast the model converges even in the few few epochs?**
 
-Attached image below shows a separate instance of training the ViT:
-![alt](https://github.com/henryocy/naic/blob/3ac8a63de21a302df553b8121c417eaaa0e24cfc/terr-train-vit.jpg)
+*Attached image below shows a separate instance of training the ViT:*
+![alt text](terr-train-vit.jpg)
 
 **ViTs plateau very fast** (look at epoch 17). ViTs' fast convergence tends to bring the risk of overfitting too, thus we had to be careful and save the model at every epoch.
 
