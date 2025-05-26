@@ -1,4 +1,4 @@
-<h1> NAIC (AI Technical) team: CantByteUs </h1>
+# NAIC (AI Technical) team: CantByteUs
 ## Team members:
 ### Chin Zhi Xian
 ### Ng Tze Yang
