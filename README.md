@@ -82,7 +82,7 @@ What is your final model and why did you choose it?:
 
 We chose an ensemble of a CNN segmentation model and also a Vision Transformer model
 
-For the CNN model:
+### For the CNN model:
 
 Initially we did try to use classification models but the confusion matrix for the YOLOv11-cls models weren't at all that impressive:
 
