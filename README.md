@@ -35,7 +35,7 @@ For each class, \
 **(4)** Trained a little bigger model combining those model-annotated images with the ones we manually annotated earlier. \
 **(5)** Repeat from step **(2)** until the entire dataset is completed.
 
-Attached image below explains pseudo-labelling:
+*Attached image explains pseudo-labelling:*
 ![alt](https://github.com/henryocy/naic/blob/bfdda578c6950efe76dd8404664154a68988e6c5/pseudo-labelling.jpg)
 
 Eventually we were plateaued with a raw dataset of 98 images in each class that were perfectly annotated by the model for its respective class.
