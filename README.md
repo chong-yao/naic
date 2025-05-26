@@ -39,6 +39,8 @@ Eventually we were plateaued with a raw dataset of 98 images in each class that 
 
 **(7)** We then uploaded all 784 ((90 + 8) × 8 classes) images into Roboflow for augmentation and artificially increase the dataset size. Effectively tripled the dataset size while applying augmentations.
 
+HOWEVER we purposely left the hue and colour adjustment augmentations out because it will mess with how the model interprets the images, and due to kuih identification being very colour-sensitive.
+
 **(8)** Added a few non-kuih related I images with no labels into the training split to reduce False Positives
 
 After all this, we also wrote a script to render all the segmentation annotations on top of the images, and then place all of them into a grid to be neatly visualised.
@@ -128,4 +130,6 @@ Attached image below shows a separate instance of training the ViT:
 
 ## Finally, model ensemble 
 
-### This is where we combined the outputs of the CNN and ViT to give an output.
+**This is where we combined the outputs of the CNN and ViT to give an output.**
+
+
