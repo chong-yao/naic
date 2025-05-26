@@ -132,4 +132,10 @@ Attached image below shows a separate instance of training the ViT:
 
 **This is where we combined the outputs of the CNN and ViT to give an output.**
 
+We used a soft voting method to determine the final combined output of both models.
 
+If both models agree with each other on the predicted class, then we just take that class.
+
+If one model outputs a class (or NaN), another model the other, we will take the class with the highest confidence out of both models' predicted classes.
+
+If both models give no output, then we will just leave that image blank.
