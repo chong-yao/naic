@@ -24,7 +24,7 @@ What was your data collection process?:
 
 We also included high and low resolution images of kuih. Low-res images for the model to generalise better, and high-res for the attention layers to capture the minute detail. We also took images that contained lighting from awkward angles and of various intensities, as most of the photos online were taken in optimal lighting and framing (to be appealing for promotions and advertisements). This allowed us to have more variety in our data. Moreover, we also included kuih that were partially eaten.
 
-*We discovered that both search engines weren't really able to tell the difference between Kuih Lapis and Kek Lapis too!*
+*Even Bing and Google search engines weren't really able to tell the difference between Kuih Lapis and Kek Lapis, and often got the two classes jumbled up too!*
 
 For each class, \
 **(1)** 20-30 kuih were annotated depending on the kuih feature complexity \
