@@ -1,13 +1,241 @@
+[nevermind] A2 poster/poster_design_plan.md
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuih Classification and Segmentation - CantByteUs</title>
-    <link rel="stylesheet" href="styles.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset & Body Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px; /* Base font size for rem units */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .team-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .team-members {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        /* Hero Image Section */
+        .hero-section {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Content Box Styling */
+        .content-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Color Coding for Sections */
+        .data-collection { border-left-color: #4CAF50; }
+        .pseudo-labelling { border-left-color: #2196F3; }
+        .model-development { border-left-color: #FF9800; }
+        .why-segmentation { border-left-color: #9C27B0; }
+        .why-vit { border-left-color: #F44336; }
+        .ensemble { 
+            border-left-color: #607D8B;
+            grid-column: 1 / -1; /* Span full width */
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .content-flex {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .bullet-list li {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .bullet-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+            top: 6px;
+        }
+
+        .bullet-list li strong {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Diagram and Figure Styles */
+        .diagram-container, .figure-container {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .diagram {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+        }
+
+        .figure-container figcaption {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: #34495e;
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ensemble {
+                grid-column: 1; /* Reset span */
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .content-flex {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -23,7 +251,7 @@
 
         <!-- Hero Image Section -->
         <section class="hero-section">
-            <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/experience-artistry-traditional-malaysian-kuih-desserts-stunning-detail-drone-shot-captures-exquisite-beauty-348234429.webp?token=GHSAT0AAAAAADDUO7B2NLAAEXSZA5CSZZUY2DSJZIA" alt="A vibrant assortment of Malaysian Kuih on a banana leaf" class="hero-image">
+            <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/experience-artistry-traditional-malaysian-kuih-desserts-stunning-detail-drone-shot-captures-exquisite-beauty-348234429.webp?token=GHSAT0AAAAAADDUO7B3OFRC33QA4366IMQG2DSKGNA" alt="A vibrant assortment of Malaysian Kuih on a banana leaf" class="hero-image">
         </section>
 
         <!-- Main Content Grid -->
@@ -53,7 +281,7 @@
                         </ul>
                     </div>
                     <div class="diagram-container">
-                        <img src="https://raw.githubusercontent.com/chong-yao/naic/9585f084eecd3a5d56064f5005d554b496d3c182/media/Schematic-diagram-of-pseudo-labeling.png?token=GHSAT0AAAAAADDUO7B3WUSFRW6IY2CLNPV42DSJ3JQ" alt="A diagram showing the Pseudo Labelling process: Unlabeled Data -> Model Prediction -> Combined with Labeled Data -> Retrain Model" class="diagram">
+                        <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/Schematic-diagram-of-pseudo-labeling.png?token=GHSAT0AAAAAADDUO7B37LEEBGNQ36PAFJCO2DSKGAA" alt="A diagram showing the Pseudo Labelling process: Unlabeled Data -> Model Prediction -> Combined with Labeled Data -> Retrain Model" class="diagram">
                     </div>
                 </div>
             </section>
@@ -79,7 +307,7 @@
                     <li><strong>Near-Perfect Matrix:</strong> Achieved a near-perfect, clean confusion matrix, validating the segmentation-first approach.</li>
                 </ul>
                  <figure class="figure-container">
-                    <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/confusion_matrix_normalized_seg.png?token=GHSAT0AAAAAADDUO7B2KSZZVLYO33WTAV5C2DSJ37A" alt="A normalized confusion matrix showing high accuracy (most values along the diagonal are above 0.8) for the YOLOv11x-seg model across 8 classes of kuih." class="diagram">
+                    <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/confusion_matrix_normalized_seg.png?token=GHSAT0AAAAAADDUO7B3WWX7KHVRO3QSRO3S2DSKFMQ" alt="A normalized confusion matrix showing high accuracy (most values along the diagonal are above 0.8) for the YOLOv11x-seg model across 8 classes of kuih." class="diagram">
                     <figcaption>Normalized confusion matrix for the YOLOv11x-seg model.</figcaption>
                 </figure>
             </section>
