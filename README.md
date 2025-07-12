@@ -28,7 +28,7 @@ For each class:
 6. Repeated the process until the dataset was complete.
 
 *Attached image explains pseudo-labelling:*
-![alt text](pseudo-labelling.jpg)
+![alt text](media/pseudo-labelling.jpg)
 
 Paper:```
 Lee, Dong-Hyun. (2013). Pseudo-Label: The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks. ICML 2013 Workshop : Challenges in Representation Learning (WREPL). We propose the simple and efficient method of semi-supervised learning for deep neural networks. Basically, the proposed network is trained in a supervised fashion with labeled and unlabeled data simultaneously. For un-labeled data, Pseudo-Label s, just picking up the class which has the maximum predicted probability, are used as if they were true labels. This is in effect equivalent to Entropy Regularization. It favors a low-density separation between classes, a commonly assumed prior for semi-supervised learning. With De-noising Auto-Encoder and Dropout, this simple method outperforms conventional methods for semi-supervised learning with very small labeled data on the MNIST handwritten digit dataset.```
@@ -45,7 +45,7 @@ Eventually, we plateaued with a raw dataset of 98 images in each class that were
 
 After all this, we also wrote a script to render all the segmentation annotations on top of the images and then place all of them into a grid to be neatly visualised.
 
-*Attached image below shows our rendered final validation split, the different mask colors representing the 8 different classes:*![alt text](val-viz.jpg)
+*Attached image below shows our rendered final validation split, the different mask colors representing the 8 different classes:*![alt text](media/val-viz.jpg)
 
 ## Model Development
 - Tools Used:
@@ -74,20 +74,20 @@ We chose an ensemble of a CNN segmentation model and a Vision Transformer (ViT) 
 The confusion matrix for the YOLOv11-cls (classification) models wasn't at all that impressive:
 
 *Attached image shows the confusion matrix for YOLOv11m-cls model on a 50-images per class dataset:*
-![alt text](confusion_matrix_cls.png)
+![alt text](media/confusion_matrix_cls.png)
 
 ***"A robust segmentation model inherently improves classification accuracy"*** - It prioritises the core image (the kuih) and reduces distractions.
 
 We started training segmentation models:
 *Attached image shows training & validation metrics for the YOLOv11x-seg model:*
-![alt text](seg-metrics.png)
+![alt text](media/seg-metrics.png)
 
 **Notice how the cls_loss plummeted after only a few epochs?**
 
 True enough, the confusion matrix for the segmentation model was near-perfect.
 
 *Attached image shows the confusion matrix for YOLOv11x-seg model on an 8-images per class validation split:*
-![alt text](confusion_matrix_normalized_seg.png)
+![alt text](media/confusion_matrix_normalized_seg.png)
 
 ### Why Vision Transformer?
 Vision Transformers split the input image into patches, and then "transform" the patches into tokens (like words in LLMs).
@@ -103,12 +103,12 @@ Kuih may look visually similar (looking at kek lapis-kuih lapis & kuih seri muka
 - They perform well when pretrained on large datasets. We used the 'eva02_base_patch14_224.mim_in22k' model pretrained on ImageNet 22k.
 
 *Attached image shows an instance of training the ViT:*
-![alt text](cy-train-vit.png)
+![alt text](media/cy-train-vit.png)
 
 **Notice how fast the model converges even in the first few epochs?**
 
 *Attached image below shows a separate instance of training the ViT:*
-![alt text](terr-train-vit.jpg)
+![alt text](media/terr-train-vit.jpg)
 
 **ViTs plateau very fast** (look at epoch 17). ViTs' fast convergence tends to bring the risk of overfitting too; thus, we had to be careful and save the model at every epoch.
 
