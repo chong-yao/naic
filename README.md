@@ -45,7 +45,7 @@ Eventually, we plateaued with a raw dataset of 98 images in each class that were
 
 After all this, we also wrote a script to render all the segmentation annotations on top of the images and then place all of them into a grid to be neatly visualised.
 
-*Attached image below shows our rendered final validation split, the different mask colors representing the 8 different classes:*![alt text](media/val-viz.jpg)
+*Attached image below shows our rendered final validation split, the different mask colors representing the 8 different classes:*![alt text](dataset/val-viz.jpg)
 
 ## Model Development
 - Tools Used:
