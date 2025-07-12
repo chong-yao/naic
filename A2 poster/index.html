@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuih Classification and Segmentation - CantByteUs</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="main-title">Kuih Classification and Segmentation</h1>
+            <h2 class="subtitle">Using Ensemble Learning: CNN Segmentation + Vision Transformer</h2>
+            <div class="team-info">
+                <h3>NAIC (AI Technical) Team: CantByteUs</h3>
+                <p class="team-members">Chin Zhi Xian • Ng Tze Yang • Ong Chong Yao • Terrence Ong Jun Han</p>
+            </div>
+        </header>
+
+        <!-- Hero Image Section -->
+        <section class="hero-section">
+            <img src="https://thumbs.dreamstime.com/b/experience-artistry-traditional-malaysian-kuih-desserts-stunning-detail-drone-shot-captures-exquisite-beauty-348234429.jpg" alt="A vibrant assortment of Malaysian Kuih on a banana leaf" class="hero-image">
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Data Collection & Preparation -->
+            <section class="content-box data-collection">
+                <h3 class="section-title">Data Collection & Preparation</h3>
+                <ul class="bullet-list">
+                    <li><strong>Scraped ~2500 images/class</strong> from Bing and Google.</li>
+                    <li><strong>Removed duplicates</strong> by computing tensor differences between images.</li>
+                    <li><strong>Manually filtered</strong> unrelated images and combined with original photos.</li>
+                    <li><strong>Annotated original dataset</strong> for segmentation using Label Studio due to a lack of existing segmentation-formatted kuih datasets.</li>
+                    <li><strong>Final Dataset:</strong> Plateaued at 98 perfectly annotated images per class, split into 90 for training and 8 for validation.</li>
+                    <li><strong>Augmentation:</strong> Used Roboflow to triple the dataset size, excluding hue/color adjustments to preserve color-sensitive features.</li>
+                </ul>
+            </section>
+
+            <!-- Pseudo Labelling -->
+            <section class="content-box pseudo-labelling">
+                <h3 class="section-title">Pseudo Labelling Method</h3>
+                <div class="content-flex">
+                    <div class="text-content">
+                        <ul class="bullet-list">
+                            <li><strong>Efficient Annotation:</strong> Used a semi-supervised technique to create the dataset efficiently.</li>
+                            <li><strong>Initial Labelling:</strong> Manually annotated 20-30 complex kuih images per class.</li>
+                            <li><strong>Iterative Process:</strong> Trained a small YOLO model to annotate remaining images, followed by manual verification, and retrained a larger model on the combined data.</li>
+                        </ul>
+                    </div>
+                    <div class="diagram-container">
+                        <img src="https://www.researchgate.net/publication/341813397/figure/fig2/AS:11431281345061912@1743615334460/Schematic-diagram-of-pseudo-labeling.tif" alt="A diagram showing the Pseudo Labelling process: Unlabeled Data -> Model Prediction -> Combined with Labeled Data -> Retrain Model" class="diagram">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Model Development -->
+            <section class="content-box model-development">
+                <h3 class="section-title">Model Development</h3>
+                <ul class="bullet-list">
+                    <li><strong>Tools:</strong> PyTorch, Ultralytics, and CUDA for GPU acceleration.</li>
+                    <li><strong>Initial Challenge:</strong> Large, modified YOLO models tended to overfit on the small, specialized kuih dataset.</li>
+                    <li><strong>Solution:</strong> Used a pre-trained **YOLOv11x-seg** model (trained on COCO 2017) and fine-tuned it on our kuih dataset.</li>
+                    <li><strong>Preprocessing:</strong> Normalized image exposure during inference for more consistent lighting and better model performance.</li>
+                </ul>
+            </section>
+
+            <!-- Why Segmentation -->
+            <section class="content-box why-segmentation">
+                <h3 class="section-title">Why Segmentation?</h3>
+                <ul class="bullet-list">
+                    <li><strong>"Robust segmentation inherently improves classification accuracy."</strong></li>
+                    <li><strong>Focus on the Object:</strong> Prioritizes the kuih itself, significantly reducing background noise and distractions.</li>
+                    <li><strong>Impressive Results:</strong> The classification loss plummeted after only a few epochs of training.</li>
+                    <li><strong>Near-Perfect Matrix:</strong> Achieved a near-perfect, clean confusion matrix, validating the segmentation-first approach.</li>
+                </ul>
+                 <figure class="figure-container">
+                    <img src="" alt="A normalized confusion matrix showing high accuracy (most values along the diagonal are above 0.8) for the YOLOv11x-seg model across 8 classes of kuih." class="diagram">
+                    <figcaption>Normalized confusion matrix for the YOLOv11x-seg model.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Why Vision Transformer -->
+            <section class="content-box why-vit">
+                <h3 class="section-title">Why Vision Transformer (ViT)?</h3>
+                 <ul class="bullet-list">
+                    <li><strong>Global Context:</strong> Splits images into patches and uses a self-attention mechanism to capture long-distance relationships across the entire image in every layer.</li>
+                    <li><strong>Texture Analysis:</strong> Effectively addresses subtle visual similarities (e.g., Kek Lapis vs. Kuih Lapis) by analyzing texture and patterns.</li>
+                    <li><strong>Fast Convergence:</strong> Pre-trained on the large ImageNet 22k dataset (`eva02_base_patch14_224.mim_in22k`), the ViT model converged extremely quickly on our data.</li>
+                     <li><strong>Overfitting Risk:</strong> Fast convergence required careful saving at each epoch to select the best-performing model before it began to overfit.</li>
+                </ul>
+            </section>
+            
+            <!-- Ensemble Approach -->
+            <section class="content-box ensemble">
+                <h3 class="section-title">Final Model: An Ensemble Approach</h3>
+                <ul class="bullet-list">
+                    <li><strong>Hybrid Power:</strong> Combines the strengths of the **CNN Segmentation model (YOLOv11x-seg)** and the **Vision Transformer (ViT)**.</li>
+                    <li><strong>Soft Voting Method:</strong> A soft voting method determines the final classification.</li>
+                    <li><strong>Decision Logic:</strong> If the models agree, that class is chosen. If they disagree, the class with the highest confidence score from either model is selected.</li>
+                    <li><strong>Superior Performance:</strong> This hybrid approach significantly outperformed either of the solo models in classification tests, leading to a highly robust and accurate final model.</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>NAIC 2025 • AI Technical Competition • Team CantByteUs</p>
+        </footer>
+    </div>
+</body>
+</html>
