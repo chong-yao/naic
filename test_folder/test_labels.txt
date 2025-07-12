@@ -1,0 +1,9 @@
+Filename,Class
+"Kuih Talam.jpg","Kuih Talam"
+"Kek Lapis.jpg","Kek Lapis"
+"Kuih Kaswi Pandan.jpg","Kuih Kaswi Pandan"
+"Kuih Ketayap.jpg","Kuih Ketayap"
+"Kuih Lapis.jpg","Kuih Lapis"
+"Kuih Seri Muka.png","Kuih Seri Muka"
+"Kuih Ubi Kayu.jpg","Kuih Ubi Kayu"
+"Onde-Onde.jpg","Onde-Onde"
