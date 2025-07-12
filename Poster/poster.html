@@ -3,243 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuih Classification and Segmentation - CantByteUs</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* General Reset & Body Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* General Reset & Body Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        html {
-            font-size: 16px; /* Base font size for rem units */
-            scroll-behavior: smooth;
-        }
+    html {
+        font-size: 19px; 
+    }
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.5;
+        /* A2 Dimensions */
+        width: 420mm;
+        height: 594mm;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    /* Main Container */
+    .container {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
 
-        /* Header Section */
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2.5rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
+    /* Header Section */
+    .header {
+        text-align: center;
+        margin-bottom: 0rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 0rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
 
-        .main-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
+    .main-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
 
-        .subtitle {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-        }
+    .subtitle {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 0rem;
+        opacity: 0.95;
+    }
 
-        .team-info h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #ffd700;
-            font-family: 'Montserrat', sans-serif;
-        }
+    .team-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0rem;
+        color: #ffd700;
+        font-family: 'Montserrat', sans-serif;
+    }
 
-        .team-members {
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
+    .team-members {
+        font-size: 1.15rem;
+        font-weight: 400;
+    }
 
-        /* Hero Image Section */
-        .hero-section {
-            margin-bottom: 2.5rem;
-            text-align: center;
-        }
+    /* Hero Image Section */
+    .hero-section {
+        margin-bottom: 0rem;
+        text-align: center;
+    }
 
-        .hero-image {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            object-fit: cover;
-        }
+    .hero-image {
+        width: 100%;
+        max-width: 100%;
+        height: 120px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        object-fit: cover;
+    }
 
-        /* Content Grid */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
+    /* Content Grid */
+    .content-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        flex-grow: 1; 
+    }
 
-        /* Content Box Styling */
-        .content-box {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+    /* Content Box Styling */
+    .content-box {
+        background: white;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid;
+        display: flex;
+        flex-direction: column;
+    }
 
-        .content-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
+    /* Color Coding for Sections */
+    .data-collection { border-left-color: #4CAF50; }
+    .pseudo-labelling { border-left-color: #2196F3; }
+    .model-development { border-left-color: #FF9800; }
+    .why-segmentation { 
+        border-left-color: #9C27B0;
+        grid-column: 1 / -1; /* MODIFIED: Span full width to accommodate horizontal layout */
+    }
+    .why-vit { border-left-color: #F44336; }
+    .ensemble { 
+        border-left-color: #607D8B;
+        grid-column: 1 / -1;
+    }
 
-        /* Color Coding for Sections */
-        .data-collection { border-left-color: #4CAF50; }
-        .pseudo-labelling { border-left-color: #2196F3; }
-        .model-development { border-left-color: #FF9800; }
-        .why-segmentation { border-left-color: #9C27B0; }
-        .why-vit { border-left-color: #F44336; }
-        .ensemble { 
-            border-left-color: #607D8B;
-            grid-column: 1 / -1; /* Span full width */
-        }
+    .section-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 0rem;
+        color: #2c3e50;
+        padding-bottom: 0rem;
+        border-bottom: 2px solid #ecf0f1;
+    }
+    
+    /* MODIFIED: Flex container for horizontal layouts */
+    .content-flex {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-grow: 1;
+    }
 
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #ecf0f1;
-        }
+    .text-content {
+        flex: 1; 
+    }
+    
+    .diagram-container {
+       flex: 0.8;
+       margin-top: 0;
+    }
 
-        .content-flex {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
+    /* MODIFIED: Specific sizing for the segmentation section's content */
+    .why-segmentation .text-content {
+        flex: 1;
+        margin-top: 0rem;
+    }
 
-        .text-content {
-            flex: 1;
-        }
+    .why-segmentation .figure-container {
+        flex: 1.2; /* Give more space to the wide image */
+        margin-top: 0;
+    }
 
-        .bullet-list {
-            list-style: none;
-            padding-left: 0;
-        }
+    .bullet-list {
+        list-style: none;
+        padding-left: 0;
+    }
 
-        .bullet-list li {
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
+    .bullet-list li {
+        font-size: 1.22rem; 
+        margin-bottom: 0rem; 
+        padding-left: 1rem;
+        position: relative;
+    }
 
-        .bullet-list li::before {
-            content: "▶";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-size: 0.8rem;
-            top: 6px;
-        }
+    .bullet-list li::before {
+        content: "▶";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-size: 0.8rem;
+        top: 5px;
+    }
 
-        .bullet-list li strong {
-            font-weight: 600;
-            color: #2c3e50;
-        }
+    .bullet-list li strong {
+        font-weight: 600;
+        color: #2c3e50;
+    }
 
-        /* Diagram and Figure Styles */
-        .diagram-container, .figure-container {
-            margin-top: 1rem;
-            text-align: center;
-        }
+    .diagram {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+        background: #f8f9fa;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+    }
 
-        .diagram {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-            background: #f8f9fa;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-        }
+    .figure-container {
+        margin-top: 0rem; 
+        text-align: center;
+    }
+    
+    .figure-container figcaption {
+        font-size: 0.9rem; 
+        color: #6c757d;
+        margin-top: 0rem;
+        font-style: italic;
+    }
 
-        .figure-container figcaption {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-top: 0.5rem;
-            font-style: italic;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
-            background: #34495e;
-            color: white;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        /* Responsive Media Queries */
-        @media (max-width: 992px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .ensemble {
-                grid-column: 1; /* Reset span */
-            }
-        }
-
-        @media (max-width: 768px) {
-            html {
-                font-size: 14px;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
-            
-            .main-title {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.25rem;
-            }
-
-            .content-flex {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header Section -->
         <header class="header">
-            <h1 class="main-title">Kuih Classification and Segmentation</h1>
+            <h2 class="main-title">Kuih Classification and Segmentation</h2>
             <h2 class="subtitle">Using Ensemble Learning: CNN Segmentation + Vision Transformer</h2>
             <div class="team-info">
                 <h3>NAIC (AI Technical) Team: CantByteUs</h3>
@@ -249,7 +228,7 @@
 
         <!-- Hero Image Section -->
         <section class="hero-section">
-            <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/experience-artistry-traditional-malaysian-kuih-desserts-stunning-detail-drone-shot-captures-exquisite-beauty-348234429.webp?token=GHSAT0AAAAAADDUO7B3OFRC33QA4366IMQG2DSKGNA" alt="A vibrant assortment of Malaysian Kuih on a banana leaf" class="hero-image">
+            <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/experience-artistry-traditional-malaysian-kuih-desserts-stunning-detail-drone-shot-captures-exquisite-beauty-348234429.webp" alt="A vibrant assortment of Malaysian Kuih on a banana leaf" class="hero-image">
         </section>
 
         <!-- Main Content Grid -->
@@ -279,7 +258,7 @@
                         </ul>
                     </div>
                     <div class="diagram-container">
-                        <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/Schematic-diagram-of-pseudo-labeling.png?token=GHSAT0AAAAAADDUO7B37LEEBGNQ36PAFJCO2DSKGAA" alt="A diagram showing the Pseudo Labelling process: Unlabeled Data -> Model Prediction -> Combined with Labeled Data -> Retrain Model" class="diagram">
+                        <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/Schematic-diagram-of-pseudo-labeling.png" alt="A diagram showing the Pseudo Labelling process" class="diagram">
                     </div>
                 </div>
             </section>
@@ -290,35 +269,40 @@
                 <ul class="bullet-list">
                     <li><strong>Tools:</strong> PyTorch, Ultralytics, and CUDA for GPU acceleration.</li>
                     <li><strong>Initial Challenge:</strong> Large, modified YOLO models tended to overfit on the small, specialized kuih dataset.</li>
-                    <li><strong>Solution:</strong> Used a pre-trained **YOLOv11x-seg** model (trained on COCO 2017) and fine-tuned it on our kuih dataset.</li>
-                    <li><strong>Preprocessing:</strong> Normalized image exposure during inference for more consistent lighting and better model performance.</li>
+                    <li><strong>Solution:</strong> Used a pre-trained **YOLOv11x-seg** model and fine-tuned it on our kuih dataset.</li>
+                    <li><strong>Preprocessing:</strong> Normalized image exposure during inference for better model performance.</li>
                 </ul>
             </section>
 
-            <!-- Why Segmentation -->
-            <section class="content-box why-segmentation">
-                <h3 class="section-title">Why Segmentation?</h3>
-                <ul class="bullet-list">
-                    <li><strong>"Robust segmentation inherently improves classification accuracy."</strong></li>
-                    <li><strong>Focus on the Object:</strong> Prioritizes the kuih itself, significantly reducing background noise and distractions.</li>
-                    <li><strong>Impressive Results:</strong> The classification loss plummeted after only a few epochs of training.</li>
-                    <li><strong>Near-Perfect Matrix:</strong> Achieved a near-perfect, clean confusion matrix, validating the segmentation-first approach.</li>
-                </ul>
-                 <figure class="figure-container">
-                    <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/confusion_matrix_normalized_seg.png?token=GHSAT0AAAAAADDUO7B3WWX7KHVRO3QSRO3S2DSKFMQ" alt="A normalized confusion matrix showing high accuracy (most values along the diagonal are above 0.8) for the YOLOv11x-seg model across 8 classes of kuih." class="diagram">
-                    <figcaption>Normalized confusion matrix for the YOLOv11x-seg model.</figcaption>
-                </figure>
-            </section>
-
-            <!-- Why Vision Transformer -->
+            <!-- Why Vision Transformer (ViT)? -->
             <section class="content-box why-vit">
                 <h3 class="section-title">Why Vision Transformer (ViT)?</h3>
                  <ul class="bullet-list">
-                    <li><strong>Global Context:</strong> Splits images into patches and uses a self-attention mechanism to capture long-distance relationships across the entire image in every layer.</li>
-                    <li><strong>Texture Analysis:</strong> Effectively addresses subtle visual similarities (e.g., Kek Lapis vs. Kuih Lapis) by analyzing texture and patterns.</li>
-                    <li><strong>Fast Convergence:</strong> Pre-trained on the large ImageNet 22k dataset (`eva02_base_patch14_224.mim_in22k`), the ViT model converged extremely quickly on our data.</li>
-                     <li><strong>Overfitting Risk:</strong> Fast convergence required careful saving at each epoch to select the best-performing model before it began to overfit.</li>
+                    <li><strong>Global Context:</strong> Splits images into patches and uses self-attention to capture long-distance relationships.</li>
+                    <li><strong>Texture Analysis:</strong> Effectively addresses subtle visual similarities (e.g., Kek Lapis vs. Kuih Lapis).</li>
+                    <li><strong>Fast Convergence:</strong> Pre-trained on ImageNet 22k, the ViT model converged extremely quickly on our data.</li>
+                     <li><strong>Overfitting Risk:</strong> Required careful saving at each epoch to select the best model before it overfit.</li>
                 </ul>
+            </section>
+            
+            <!-- Why Segmentation? -->
+            <section class="content-box why-segmentation">
+                <h3 class="section-title">Why Segmentation?</h3>
+                <!-- MODIFIED: Wrapper for horizontal layout -->
+                <div class="content-flex">
+                    <div class="text-content">
+                        <ul class="bullet-list">
+                            <li><strong>"Robust segmentation inherently improves classification accuracy."</strong></li>
+                            <li><strong>Focus on the Object:</strong> Prioritizes the kuih itself, significantly reducing background noise and distractions.</li>
+                            <li><strong>Impressive Results:</strong> The classification loss plummeted after only a few epochs of training.</li>
+                            <li><strong>Near-Perfect Matrix:</strong> Achieved a near-perfect, clean confusion matrix, validating the segmentation-first approach.</li>
+                        </ul>
+                    </div>
+                    <figure class="figure-container">
+                        <img src="https://raw.githubusercontent.com/chong-yao/naic/refs/heads/main/media/confusion_matrix_normalized_seg.png" alt="A normalized confusion matrix showing high accuracy for the YOLOv11x-seg model" class="diagram">
+                        <figcaption>Normalized confusion matrix for the YOLOv11x-seg model.</figcaption>
+                    </figure>
+                </div>
             </section>
             
             <!-- Ensemble Approach -->
@@ -327,16 +311,11 @@
                 <ul class="bullet-list">
                     <li><strong>Hybrid Power:</strong> Combines the strengths of the **CNN Segmentation model (YOLOv11x-seg)** and the **Vision Transformer (ViT)**.</li>
                     <li><strong>Soft Voting Method:</strong> A soft voting method determines the final classification.</li>
-                    <li><strong>Decision Logic:</strong> If the models agree, that class is chosen. If they disagree, the class with the highest confidence score from either model is selected.</li>
-                    <li><strong>Superior Performance:</strong> This hybrid approach significantly outperformed either of the solo models in classification tests, leading to a highly robust and accurate final model.</li>
+                    <li><strong>Decision Logic:</strong> If models disagree, the class with the highest confidence score is selected.</li>
+                    <li><strong>Superior Performance:</strong> This hybrid approach significantly outperformed either solo model, leading to a robust final model.</li>
                 </ul>
             </section>
         </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>NAIC 2025 • AI Technical Competition • Team CantByteUs</p>
-        </footer>
     </div>
 </body>
 </html>
