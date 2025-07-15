@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/chong-yao/chong-yao/raw/main/Resume.pdf">
+    <img src="https://img.shields.io/badge/PDF-Download This Documentation-blue?style=for-the-badge&logo=adobeacrobatreader" alt="Download README PDF"/>
+  </a>
+</p>
+
 # NAIC (AI Technical) team: CantByteUs
 ## By:
 **Chin Zhi Xian \
