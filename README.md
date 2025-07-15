@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/chong-yao/chong-yao/raw/main/Resume.pdf">
-    <img src="https://img.shields.io/badge/PDF-Download This Documentation-blue?style=for-the-badge&logo=adobeacrobatreader" alt="Download README PDF"/>
+  <a href="https://github.com/chong-yao/naic/raw/main/README.pdf">
+    <img src="https://img.shields.io/badge/PDF-Download This Writeup-blue?style=for-the-badge&logo=adobeacrobatreader" alt="Download README PDF"/>
   </a>
 </p>
 
