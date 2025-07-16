@@ -108,7 +108,8 @@ Kuih may look visually similar (looking at kek lapis-kuih lapis & kuih seri muka
 
 - Vision Transformers perform well and more efficiently (even surpassing CNNs) when pretrained on a large dataset.
 
-- They perform well when pretrained on large datasets. We used the '[eva02_base_patch14_224.mim_in22k](https://huggingface.co/timm/eva02_base_patch14_224.mim_in22k)' model pretrained on ImageNet 22k.
+- They perform well when pretrained on large datasets. We used the 'eva02_base_patch14_224.mim_in22k' model pretrained on ImageNet 22k.
+    - [eva02_base_patch14_224.mim_in22k by timm](https://huggingface.co/timm/eva02_base_patch14_224.mim_in22k)
 
 *Attached image shows an instance of training the ViT:*
 ![alt text](media/cy-train-vit.png)
