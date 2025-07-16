@@ -6,15 +6,17 @@
 
 # NAIC (AI Technical) team: CantByteUs
 ## By:
-**Chin Zhi Xian \
+**Ong Chong Yao \
+Terrence Ong Jun Han \
 Ng Tze Yang \
-Ong Chong Yao \
-Terrence Ong Jun Han**
+Chin Zhi Xian**
 
 ## Data Collection & Preparation
 - Scraped 2500~ images per class from the internet using the Bing and Google search engines.
+    - ['better-bing-image-downloader' library in PyPi](https://pypi.org/project/better-bing-image-downloader/)
 - Converted the images to tensors.
 - Computed the tensor differences between images to find out the image similarities, thus removing duplicates effectively.
+    - [Duplicate Image Finder by elisemercury](https://github.com/elisemercury/Duplicate-Image-Finder)
 - Manually filtered unrelated images out (e.g., images with a huge YouTube logo on it), then combined them with some images taken by ourselves.
 - Annotated a few of the kuih for segmentation using Label Studio; thus, we used our genuine original dataset, as the existing kuih datasets on dataset sharing platforms were not in segmentation format.
 - Included a variety of images:
@@ -106,7 +108,7 @@ Kuih may look visually similar (looking at kek lapis-kuih lapis & kuih seri muka
 
 - Vision Transformers perform well and more efficiently (even surpassing CNNs) when pretrained on a large dataset.
 
-- They perform well when pretrained on large datasets. We used the 'eva02_base_patch14_224.mim_in22k' model pretrained on ImageNet 22k.
+- They perform well when pretrained on large datasets. We used the '[eva02_base_patch14_224.mim_in22k](https://huggingface.co/timm/eva02_base_patch14_224.mim_in22k)' model pretrained on ImageNet 22k.
 
 *Attached image shows an instance of training the ViT:*
 ![alt text](media/cy-train-vit.png)
