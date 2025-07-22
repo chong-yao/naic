@@ -4,7 +4,6 @@
   </a>
 </p>
 
-# NAIC (AI Technical) team: CantByteUs
 ## By:
 **Ong Chong Yao \
 Terrence Ong Jun Han \
